@@ -41,6 +41,7 @@ LOCAL_CFLAGS += -W -Wall
 LOCAL_CFLAGS += -fPIC -DPIC
 LOCAL_CFLAGS += "-DDARWIN_NO_CARBON"
 LOCAL_CFLAGS += "-DFT2_BUILD_LIBRARY"
+LOCAL_CFLAGS += -fno-strict-aliasing
 
 # the following is for testing only, and should not be used in final builds
 # of the product
@@ -50,7 +51,15 @@ ifeq ($(BOARD_USE_SKIA_LCDTEXT),true)
 	LOCAL_CFLAGS += "-DFT_CONFIG_OPTION_SUBPIXEL_RENDERING"
 endif
 
+# Freetype can't be built without optimizations, so we enforce -O2 if no
+# other optimization flag is set - but we don't override what the global
+# flags are saying if something else is given (-Os or -O3 are useful)
+ifeq ($(findstring -O, $(TARGET_GLOBAL_CFLAGS)),)
 LOCAL_CFLAGS += -O2
+endif
+ifneq ($(findstring -O0, $(TARGET_GLOBAL_CFLAGS)),)
+LOCAL_CFLAGS += -O2
+endif
 
 LOCAL_MODULE:= libft2
 
