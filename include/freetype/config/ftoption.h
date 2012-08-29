@@ -92,7 +92,7 @@ FT_BEGIN_HEADER
   /* This is done to allow FreeType clients to run unmodified, forcing     */
   /* them to display normal gray-level anti-aliased glyphs.                */
   /*                                                                       */
-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
+#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
 
 
   /*************************************************************************/
@@ -557,6 +557,39 @@ FT_BEGIN_HEADER
   /*                                                                       */
 /* #define TT_CONFIG_OPTION_BYTECODE_INTERPRETER */
 
+
+  /*************************************************************************/
+  /*                                                                       */
+  /* Define TT_CONFIG_OPTION_SUBPIXEL_HINTING if you want to compile       */
+  /* EXPERIMENTAL subpixel hinting support into the TrueType driver.  This */
+  /* replaces the native TrueType hinting mechanism when anything but      */
+  /* FT_RENDER_MODE_MONO is requested.                                     */
+  /*                                                                       */
+  /* Enabling this causes the TrueType driver to ignore instructions under */
+  /* certain conditions.  This is done in accordance with the guide here,  */
+  /* with some minor differences:                                          */
+  /*                                                                       */
+  /*  http://www.microsoft.com/typography/cleartype/truetypecleartype.aspx */
+  /*                                                                       */
+  /* By undefining this, you only compile the code necessary to hint       */
+  /* TrueType glyphs with native TT hinting.                               */
+  /*                                                                       */
+  /*   This option requires TT_CONFIG_OPTION_BYTECODE_INTERPRETER to be    */
+  /*   defined.                                                            */
+  /*                                                                       */
+#define TT_CONFIG_OPTION_SUBPIXEL_HINTING
+
+
+  /*************************************************************************/
+  /*                                                                       */
+  /* Define FT_CONFIG_OPTION_INFINALITY_PATCHSET if you want to enable     */
+  /* all additional infinality patches, which are configured via env       */
+  /* variables.                                                            */
+  /*                                                                       */
+  /*   This option requires TT_CONFIG_OPTION_SUBPIXEL_HINTING to           */
+  /*   defined.                                                            */
+  /*                                                                       */
+#define FT_CONFIG_OPTION_INFINALITY_PATCHSET
 
   /*************************************************************************/
   /*                                                                       */
