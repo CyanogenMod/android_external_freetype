@@ -46,7 +46,7 @@ LOCAL_CFLAGS += "-DFT2_BUILD_LIBRARY"
 
 # the following is for testing only, and should not be used in final builds
 # of the product
-LOCAL_CFLAGS += "-DTT_CONFIG_OPTION_BYTECODE_INTERPRETER"
+#LOCAL_CFLAGS += "-DTT_CONFIG_OPTION_BYTECODE_INTERPRETER"
 
 LOCAL_CFLAGS += -O2
 
