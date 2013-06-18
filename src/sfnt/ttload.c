@@ -5,7 +5,8 @@
 /*    Load the basic TrueType tables, i.e., tables that can be either in   */
 /*    TTF or OTF fonts (body).                                             */
 /*                                                                         */
-/*  Copyright 1996-2010, 2012 by                                           */
+/*  Copyright 1996-2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,   */
+/*            2010 by                                                      */
 /*  David Turner, Robert Wilhelm, and Werner Lemberg.                      */
 /*                                                                         */
 /*  This file is part of the FreeType project, and may only be used,       */
@@ -623,7 +624,7 @@
     FT_Error        error;
     TT_MaxProfile*  maxProfile = &face->max_profile;
 
-    static const FT_Frame_Field  maxp_fields[] =
+    const FT_Frame_Field  maxp_fields[] =
     {
 #undef  FT_STRUCTURE
 #define FT_STRUCTURE  TT_MaxProfile
@@ -634,7 +635,7 @@
       FT_FRAME_END
     };
 
-    static const FT_Frame_Field  maxp_fields_extra[] =
+    const FT_Frame_Field  maxp_fields_extra[] =
     {
       FT_FRAME_START( 26 ),
         FT_FRAME_USHORT( maxPoints ),
@@ -720,7 +721,7 @@
   /*************************************************************************/
   /*                                                                       */
   /* <Function>                                                            */
-  /*    tt_face_load_name                                                  */
+  /*    tt_face_load_names                                                 */
   /*                                                                       */
   /* <Description>                                                         */
   /*    Loads the name records.                                            */
@@ -951,7 +952,7 @@
     FT_Error  error;
     TT_OS2*   os2;
 
-    static const FT_Frame_Field  os2_fields[] =
+    const FT_Frame_Field  os2_fields[] =
     {
 #undef  FT_STRUCTURE
 #define FT_STRUCTURE  TT_OS2
@@ -1003,7 +1004,7 @@
       FT_FRAME_END
     };
 
-    static const FT_Frame_Field  os2_fields_extra[] =
+    const FT_Frame_Field  os2_fields_extra[] =
     {
       FT_FRAME_START( 8 ),
         FT_FRAME_ULONG( ulCodePageRange1 ),
@@ -1011,7 +1012,7 @@
       FT_FRAME_END
     };
 
-    static const FT_Frame_Field  os2_fields_extra2[] =
+    const FT_Frame_Field  os2_fields_extra2[] =
     {
       FT_FRAME_START( 10 ),
         FT_FRAME_SHORT ( sxHeight ),
