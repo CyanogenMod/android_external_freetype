@@ -702,8 +702,7 @@ FT_BEGIN_HEADER
   *   FreeType error code.  0~means success.
   *
   * @note:
-  *   While parsing fonts, FreeType handles SFNT tables with length zero as
-  *   missing.
+  *   SFNT tables with length zero are treated as missing.
   *
   */
   FT_EXPORT( FT_Error )
